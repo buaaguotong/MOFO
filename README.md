@@ -72,3 +72,52 @@ for instance in benchmark_data:
     # Pass prompt and preference to your Agentic Formulator
 ```
 
+## Data Structure Example: A Case Study
+
+To illustrate the semantic decoupling and preference-aware design, here is a complete example of a Capacitated Vehicle Routing Problem (CVRP) instance from our benchmark. 
+
+In this case, the classic mathematical graph `A-n80-k10` is disguised as a **Low-Altitude UAV Medical Supply** scenario.
+
+```json
+{
+  "instance_id": "cvrp_A-n80-k10",
+  "base_problem": "CVRP",
+  "domain": "Low_Altitude_UAV_Medical_Supply",
+  "characteristics": {
+    "total_locations": 80,
+    "depot_count": 1,
+    "client_count": 79,
+    "fleet_size": 10
+  },
+  "nlp_description": "A low-altitude emergency response center is managing the distribution of critical blood packs to isolated rural clinics. The network consists of 1 central blood bank and 79 rural clinics with specific blood unit requirements. The center operates a fleet of 10 identical medical delivery drones, each possessing a strict maximum payload limit... Formulate a mathematical model to assign clinics to drones and determine their flight sequences to minimize total battery consumption.",
+  "user_preference": "Time-critical execution on edge devices. The algorithm runs on a portable field computer with highly constrained memory and requires a feasible dispatch plan within 5 seconds. A highly compact formulation with fewer variables is strongly preferred over an extremely tight relaxation bound. Optimality gaps of up to 10 percent are acceptable.",
+  "data_attachment": {
+    "vehicle_count": 10,
+    "vehicle_capacity": 100,
+    "depot_index": 1,
+    "distance_metric": "EUC_2D_ROUNDED",
+    "node_data": [
+      {"id": 1, "coord": [92, 92], "demand": 0},
+      {"id": 2, "coord": [88, 58], "demand": 24},
+      {"id": 3, "coord": [70, 6], "demand": 22}
+      // ... (remaining 77 nodes omitted for brevity)
+    ]
+  },
+  "ground_truth": {
+    "optimal_objective_value": 1763,
+    "expert_models": [
+      "Two_Index_Vehicle_Flow",
+      "Set_Partitioning_Formulation"
+    ]
+  }
+}
+
+Field Breakdown
+domain & nlp_description: Tests the LLM's Natural Language Understanding (NLU). The Agent must map "blood packs" to mathematical demand, "drones" to vehicles, and "battery consumption" to the objective function.
+
+user_preference: The core of the multiobjective evaluation. In this specific case, the Agentic AI must recognize the "edge device" and "time-critical" constraints, prompting it to generate a compact formulation (e.g., MTZ or single-commodity flow) rather than a memory-heavy Set Partitioning formulation, even if it sacrifices the optimality gap.
+
+data_attachment: The clean, isolated mathematical parameters. This allows your solver execution sandbox to automatically inject arrays into the generated model without parsing messy text.
+
+ground_truth: The absolute optimal value (1763) acts as the anchor for calculating the MIPGap of the LLM-generated models during the multiobjective Pareto front evaluation.
+
