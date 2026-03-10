@@ -1,0 +1,93 @@
+[
+  {
+    "instance_id": "cvrp_A-n80-k10",
+    "base_problem": "CVRP",
+    "domain": "Low_Altitude_UAV_Medical_Supply",
+    "characteristics": {
+      "total_locations": 80,
+      "depot_count": 1,
+      "client_count": 79,
+      "fleet_size": 10
+    },
+    "nlp_description": "A low-altitude emergency response center is managing the distribution of critical blood packs to isolated rural clinics. The network consists of 1 central blood bank and 79 rural clinics with specific blood unit requirements. The center operates a fleet of 10 identical medical delivery drones, each possessing a strict maximum payload limit for carrying blood packs. Every drone must launch from the blood bank, drop off the exact required units at a sequence of clinics without overloading its payload, and return to base. A single clinic must receive its entire requirement from exactly one drone visit. The flight battery consumption between any two points is proportional to their rounded 2D Euclidean distance. Please formulate a mathematical model to assign clinics to drones and determine their flight sequences to minimize total battery consumption.",
+    "user_preference": "Time-critical execution on edge devices. The algorithm runs on a portable field computer with highly constrained memory and requires a feasible dispatch plan within 5 seconds. A highly compact formulation with fewer variables is strongly preferred over an extremely tight relaxation bound. Optimality gaps of up to 10 percent are acceptable if the model generation and solving time are drastically reduced."
+  },
+  {
+    "instance_id": "cvrp_B-n68-k9",
+    "base_problem": "CVRP",
+    "domain": "Telecom_Base_Station_Maintenance",
+    "characteristics": {
+      "total_locations": 68,
+      "depot_count": 1,
+      "client_count": 67,
+      "fleet_size": 9
+    },
+    "nlp_description": "A telecommunications operator is scheduling battery replacement tasks for its 5G network infrastructure. The operation involves 1 main equipment depot and 67 remote base stations, each requiring a specific number of backup battery modules. The operator dispatches 9 maintenance trucks, each subject to a strict weight capacity limit. Each truck starts at the depot, travels to various base stations to deliver the exact number of required modules without exceeding its weight limit, and returns to the depot. Delivery splitting is strictly prohibited. The driving cost between two nodes is the rounded 2D Euclidean distance. Construct an optimization model to route these 9 trucks to minimize the overall driving cost.",
+    "user_preference": "Balanced operational efficiency. The scheduling is done daily, allowing for a moderate computational budget of roughly 10 minutes. The formulation should strike a balance between spatial complexity and tightness, aiming for a high-quality schedule without demanding excessive RAM."
+  },
+  {
+    "instance_id": "cvrp_B-n78-k10",
+    "base_problem": "CVRP",
+    "domain": "Airport_Ground_Support_Operations",
+    "characteristics": {
+      "total_locations": 78,
+      "depot_count": 1,
+      "client_count": 77,
+      "fleet_size": 10
+    },
+    "nlp_description": "An aviation ground support crew is coordinating aircraft refueling on the tarmac. There is 1 central fuel farm and 77 parked aircraft that require specific volumes of aviation fuel. The airport has 10 heavy refueler trucks available, each with a fixed maximum tank capacity. A truck leaves the fuel farm, pumps fuel to a series of aircraft without running empty, and returns to the farm. Each aircraft must be fully serviced by a single truck. The travel time between any two positions is determined by their rounded 2D Euclidean distance. Build a mathematical model to optimize the routing of the 10 refueler trucks to minimize the total travel time.",
+    "user_preference": "Absolute cost minimization and quality-critical. Fuel and delay costs are extremely high. The airline allocates dedicated high-performance computing clusters and permits up to 12 hours of offline computation overnight. Formulations that yield the tightest possible lower bounds and guarantee a 0 percent optimality gap are strictly required, regardless of the memory footprint or the complexity of the constraint matrix."
+  },
+  {
+    "instance_id": "cvrp_E-n101-k8",
+    "base_problem": "CVRP",
+    "domain": "Space_Exploration_Sample_Collection",
+    "characteristics": {
+      "total_locations": 101,
+      "depot_count": 1,
+      "client_count": 100,
+      "fleet_size": 8
+    },
+    "nlp_description": "A planetary exploration mission involves 1 stationary lander and 100 scattered geological target sites containing specific masses of rock samples. The lander deploys 8 autonomous mini-rovers, each engineered with a maximum sample holding capacity. A rover must depart from the lander, visit multiple target sites to collect the exact sample masses without exceeding its holding capacity, and return to the lander. A target site can only be visited once. The energy expended moving between sites corresponds to the rounded 2D Euclidean distance. Formulate a model to sequence the rovers' collection paths to minimize total energy expenditure.",
+    "user_preference": "Extreme memory limitations. The lander's onboard CPU has severely restricted RAM. Formulations that utilize a cubic number of variables or exponential constraint generation are strictly forbidden. The primary objective is to keep the number of non-zero elements in the constraint matrix as low as possible to prevent out-of-memory crashes during the mission."
+  },
+  {
+    "instance_id": "cvrp_F-n135-k7",
+    "base_problem": "CVRP",
+    "domain": "Agricultural_Wheat_Harvesting",
+    "characteristics": {
+      "total_locations": 135,
+      "depot_count": 1,
+      "client_count": 134,
+      "fleet_size": 7
+    },
+    "nlp_description": "A large-scale mechanized farm is coordinating the wheat harvest. The layout consists of 1 central grain silo and 134 distinct wheat field zones, each yielding a specific volume of grain. The farm operates 7 autonomous combine harvesters, each featuring a maximum grain tank capacity. A harvester starts at the silo, reaps wheat across several zones until its tank is full, and returns to the silo to unload. A single zone's yield must be collected entirely during a single visit. The mechanical wear cost between zones equals the rounded 2D Euclidean distance. Construct a mathematical model to route the 7 harvesters to minimize total mechanical wear.",
+    "user_preference": "Scalability under long-route conditions. Given the high ratio of locations to available machinery, individual routes will be exceptionally long. Formulations that struggle with long sequence symmetries or those requiring exponential subtour elimination constraints should be avoided or carefully handled. A formulation providing strong valid inequalities to tighten the root node relaxation is highly preferred."
+  },
+  {
+    "instance_id": "cvrp_M-n121-k7",
+    "base_problem": "CVRP",
+    "domain": "VLSI_Cleanroom_Gas_Distribution",
+    "characteristics": {
+      "total_locations": 121,
+      "depot_count": 1,
+      "client_count": 120,
+      "fleet_size": 7
+    },
+    "nlp_description": "A semiconductor manufacturing facility manages the distribution of specialty gases. There is 1 central gas storage room and 120 photolithography machines requiring specific quantities of gas cylinders. The facility uses 7 automated guided vehicles, each with a maximum payload limit for transporting cylinders. An automated vehicle departs from the gas room, delivers cylinders to a sequence of machines without exceeding its payload, and returns. Partial deliveries to a machine are not allowed. The transit cost between machines is equivalent to the rounded 2D Euclidean distance. Develop an optimization model to sequence the delivery tasks to minimize the total transit cost.",
+    "user_preference": "High stability and exactness. The cleanroom operates continuously, and schedules are strictly pre-computed weekly on industrial servers. A premium is placed on mathematical elegance and the ability to find a near-optimal solution reliably within a 2-hour window. Strong linear programming relaxations are preferred."
+  },
+  {
+    "instance_id": "cvrp_M-n151-k12",
+    "base_problem": "CVRP",
+    "domain": "Urban_AI_Traffic_Management",
+    "characteristics": {
+      "total_locations": 151,
+      "depot_count": 1,
+      "client_count": 150,
+      "fleet_size": 12
+    },
+    "nlp_description": "A municipal transport authority is deploying a fleet of sensor-equipped vehicles to calibrate traffic cameras. The grid includes 1 central dispatch station and 150 intersections, each requiring a certain duration of calibration data collection. There are 12 sensor vehicles available, each with a maximum daily data storage capacity. A vehicle leaves the station, visits intersections to collect data without overflowing its storage, and returns. An intersection must be fully calibrated by one vehicle. The routing cost between intersections is the rounded 2D Euclidean distance. Build a mathematical model to assign intersections to vehicles and sequence their routes to minimize the total routing cost.",
+    "user_preference": "Dynamic adaptability. Traffic conditions change rapidly, requiring the schedule to be regenerated frequently. The formulation must be inherently flexible, prioritizing incredibly fast warm-starts and rapid generation of feasible heuristic solutions over proving global optimality. Sub-optimal but highly feasible models are preferred if they solve under 30 seconds."
+  }
+]

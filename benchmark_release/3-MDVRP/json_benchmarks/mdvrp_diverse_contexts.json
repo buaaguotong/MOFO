@@ -1,0 +1,74 @@
+[
+  {
+    "instance_id": "mdvrp_p03",
+    "base_problem": "MDVRP",
+    "domain": "Shared_Bicycle_Rebalancing",
+    "characteristics": {
+      "client_count": 111,
+      "depot_count": 4,
+      "spatial_distribution": "Urban Grid"
+    },
+    "nlp_description": "A city transport authority manages a shared bicycle network. There are 4 distinct maintenance warehouses and 111 docking stations across the city that require bicycle redistribution (pick-ups or drop-offs) to balance inventory. A fleet of transport trucks is distributed among the warehouses. A truck must depart from its assigned warehouse, service a specific sequence of docking stations without exceeding its carrying capacity, and strictly return to its original departure warehouse. Each docking station must be serviced by exactly one truck. Formulate an optimization model to simultaneously assign docking stations to warehouses and sequence the truck routes to minimize the total driving distance.",
+    "user_preference": "Highly dynamic environment requiring fast execution. Real-time traffic makes long computational times impractical. The user prefers a compact formulation that commercial solvers can rapidly ingest to produce a feasible heuristic schedule within 2 minutes. Proving global optimality is not required."
+  },
+  {
+    "instance_id": "mdvrp_p12",
+    "base_problem": "MDVRP",
+    "domain": "Regional_Blood_Bank_Distribution",
+    "characteristics": {
+      "client_count": 80,
+      "depot_count": 2,
+      "spatial_distribution": "Inter-city"
+    },
+    "nlp_description": "A healthcare logistics provider is responsible for delivering specialized blood products. The operation utilizes 2 major regional blood centers to supply 80 critical care hospitals. Each hospital requires a specific volume of blood products. Refrigerated delivery vans are stationed at the two blood centers. A van leaves its home center, visits a subset of hospitals to fulfill their exact requirements subject to its payload capacity, and returns to the same home center. Deliveries cannot be split between vans. Construct a mathematical model to determine which center serves which hospitals and to optimize the delivery sequences, minimizing the total distance traveled by all vans.",
+    "user_preference": "Absolute cost and reliability focus. The routing is planned weekly with high cost-sensitivity. The user allocates 12 hours of offline computation on a high-performance server. The formulation must yield the tightest possible lower bounds and guarantee optimal or near-optimal solutions (0% gap). Memory is virtually unlimited."
+  },
+  {
+    "instance_id": "mdvrp_pr01",
+    "base_problem": "MDVRP",
+    "domain": "Disaster_Relief_Drone_Swarm",
+    "characteristics": {
+      "client_count": 48,
+      "depot_count": 4,
+      "spatial_distribution": "Clustered around depots"
+    },
+    "nlp_description": "In the aftermath of a natural disaster, an emergency response team deploys 4 mobile command vehicles serving as launch hubs. There are 48 isolated survivor camps needing specific weights of medical supplies. A swarm of heavy-lift delivery drones is divided among the 4 hubs. A drone takes off from a specific hub, drops supplies at several camps until its battery or payload reaches the limit, and must fly back to the exact same hub for recharging. Each camp receives supplies from a single drone. Formulate a mathematical model to allocate camps to hubs and route the drones to minimize total flight energy consumption.",
+    "user_preference": "Extreme memory limitations on edge devices. The algorithm runs on field-deployable laptops. Formulations utilizing three-index variables (e.g., tracking vehicle, node, and depot simultaneously) or exponential constraints are forbidden to prevent out-of-memory errors. The model must minimize the number of non-zero elements in the constraint matrix."
+  },
+  {
+    "instance_id": "mdvrp_pr02",
+    "base_problem": "MDVRP",
+    "domain": "Supermarket_Supply_Chain",
+    "characteristics": {
+      "client_count": 96,
+      "depot_count": 4,
+      "spatial_distribution": "Regional Sectors"
+    },
+    "nlp_description": "A major retail chain operates 4 regional distribution hubs that supply 96 grocery stores. Each store requires a specific number of pallet loads. A fleet of heavy-duty trucks is assigned across the hubs. A truck departs its assigned hub, delivers pallets to a sequence of stores without running empty, and returns to its starting hub. A store's demand must be completely satisfied by one truck in a single visit. Build an optimization model to decide the hub-to-store assignments and the exact routing sequences to minimize total logistical driving costs.",
+    "user_preference": "Balanced operational efficiency. The user requires a daily routing plan computed within a 15-minute window. The formulation should strike a robust balance between spatial complexity and linear relaxation tightness, aiming for a high-quality schedule without demanding excessive RAM."
+  },
+  {
+    "instance_id": "mdvrp_pr03",
+    "base_problem": "MDVRP",
+    "domain": "Offshore_Wind_Farm_Maintenance",
+    "characteristics": {
+      "client_count": 144,
+      "depot_count": 4,
+      "spatial_distribution": "Coastal/Offshore"
+    },
+    "nlp_description": "An energy company maintains a massive offshore wind farm utilizing 4 coastal ports as operational bases. There are 144 wind turbines requiring scheduled maintenance, each needing specific equipment weights. Crew transfer vessels are docked at the ports. A vessel departs from its home port, services multiple turbines subject to its equipment carrying capacity, and must return to the same home port. Splitting a turbine's maintenance between vessels is not allowed. Construct an optimization model to allocate turbines to coastal ports and route the vessels to minimize total maritime fuel consumption.",
+    "user_preference": "Scalability for long routes. Due to the high number of turbines, individual vessel routes may be exceptionally long. Standard subtour elimination constraints that scale poorly with route length will cause memory explosion. The user prefers advanced formulations (like set partitioning) or models providing strong valid inequalities to tighten the root node."
+  },
+  {
+    "instance_id": "mdvrp_pr07",
+    "base_problem": "MDVRP",
+    "domain": "Smart_City_Waste_Collection",
+    "characteristics": {
+      "client_count": 72,
+      "depot_count": 6,
+      "spatial_distribution": "Distributed Urban Zones"
+    },
+    "nlp_description": "A municipal environmental department coordinates waste collection across 72 neighborhood zones using 6 distinct waste processing facilities. Garbage trucks are stationed at these facilities. A truck leaves its facility, collects waste from various zones until its compactor is full, and returns to its home facility to unload. Each zone must be completely cleared by one truck. The travel time between any two locations is given. Develop a mathematical model to assign zones to processing facilities and sequence the trucks' collection paths to minimize the total operational driving time.",
+    "user_preference": "High adaptability for heuristic warm-starts. The assignment of zones to facilities can be complex. The formulation must be inherently flexible, prioritizing structures where a solver can easily inject initial heuristic solutions (warm-starts) to rapidly find feasible bounds. Formulations that are easy to decompose (e.g., separating assignment from routing) are preferred."
+  }
+]

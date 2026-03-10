@@ -1,0 +1,98 @@
+[
+  {
+    "instance_id": "tsp_att48",
+    "base_problem": "TSP",
+    "domain": "Low_Altitude_UAV_Data_Collection",
+    "characteristics": {
+      "total_locations": 48,
+      "depot_count": 1,
+      "target_count": 47
+    },
+    "nlp_description": "A telecommunications operator is optimizing a low-altitude communication network. A single unmanned aerial vehicle must collect data from 48 dispersed ground sensor nodes. The vehicle starts at the primary base node, visits all other 47 nodes exactly once to retrieve edge computing logs, and returns to the origin. The energy consumed between two nodes is proportional to their spatial distance. Formulate a mathematical model to sequence the data collection path to minimize total energy consumption.",
+    "user_preference": "Time-critical execution for real-time dynamic adjustments. The algorithm runs on a portable field device with constrained memory. A highly compact formulation with fewer variables is strongly preferred over an extremely tight relaxation bound. Fast generation of feasible paths is prioritized."
+  },
+  {
+    "instance_id": "tsp_berlin52",
+    "base_problem": "TSP",
+    "domain": "Airport_Ground_Movement_Optimization",
+    "characteristics": {
+      "total_locations": 52,
+      "depot_count": 1,
+      "target_count": 51
+    },
+    "nlp_description": "An aviation management system is optimizing the sequence of a single autonomous towing tractor moving 52 pieces of ground support equipment across the airport apron. The tractor leaves the central parking bay, visits each equipment location exactly once for repositioning, and returns to the bay. The travel time between locations is the rounded 2D Euclidean distance. Build a mathematical model to optimize the routing of the tractor to minimize the total travel time.",
+    "user_preference": "Absolute cost minimization and quality-critical. To avoid flight delays and passenger flow disruptions, the model must yield the tightest possible lower bounds and guarantee optimal or near-optimal solutions. Offline computation on a server cluster is permitted."
+  },
+  {
+    "instance_id": "tsp_brazil58",
+    "base_problem": "TSP",
+    "domain": "Aircraft_PHM_Inspection",
+    "characteristics": {
+      "total_locations": 58,
+      "depot_count": 1,
+      "target_count": 57
+    },
+    "nlp_description": "An automated maintenance robot is tasked with inspecting 58 critical diagnostic points on a commercial aircraft fuselage for prognostics and health management. The robot initiates its scan from the calibration point, traverses all remaining 57 diagnostic points without repetition to perform rare fault data collection, and returns to the start. The mechanical transit cost is based on surface distances. Develop an optimization model to sequence the inspection tasks to minimize the total transit cost.",
+    "user_preference": "Extreme memory limitations on the embedded robotic system. Formulations utilizing cubic numbers of variables or exponential constraint generation are strictly forbidden. The primary objective is to keep the number of non-zero elements in the constraint matrix as low as possible."
+  },
+  {
+    "instance_id": "tsp_st70",
+    "base_problem": "TSP",
+    "domain": "Urban_Infrastructure_Maintenance",
+    "characteristics": {
+      "total_locations": 70,
+      "depot_count": 1,
+      "target_count": 69
+    },
+    "nlp_description": "A municipal management department is dispatching a specialized vehicle to inspect 70 smart traffic monitoring stations. The vehicle leaves the municipal depot, visits each station to download operational maintenance records exactly once, and returns. The driving distance between stations dictates the fuel cost. Construct a mathematical model to find the routing plan that strictly minimizes the total fuel cost.",
+    "user_preference": "Balanced operational efficiency. The scheduling is done daily, allowing for a moderate computational budget. The formulation should strike a balance between spatial complexity and tightness, aiming for a high-quality schedule without demanding excessive memory."
+  },
+  {
+    "instance_id": "tsp_gr96",
+    "base_problem": "TSP",
+    "domain": "Enterprise_Optical_Network_Topology",
+    "characteristics": {
+      "total_locations": 96,
+      "depot_count": 1,
+      "target_count": 95
+    },
+    "nlp_description": "A technology enterprise requires designing a ring topology connecting 96 regional data centers to minimize optical fiber length. A continuous connection loop must be formed starting from the primary hub, linking all other 95 centers exactly once, and closing back at the hub. The cabling cost is directly proportional to the physical distance between centers. Formulate an optimization problem to minimize the total cabling distance.",
+    "user_preference": "High stability and exactness for strategic infrastructure investment. The planning phase allows for extensive offline computation on industrial servers. A premium is placed on mathematical elegance and the ability to find a near-optimal solution reliably using strong linear programming relaxations."
+  },
+  {
+    "instance_id": "tsp_kroA100",
+    "base_problem": "TSP",
+    "domain": "Time_Series_Sensor_Calibration",
+    "characteristics": {
+      "total_locations": 100,
+      "depot_count": 1,
+      "target_count": 99
+    },
+    "nlp_description": "An autonomous rover calibrates 100 agricultural sensors used for collecting time-series data on wheat growth. The rover starts at the base station, accesses each of the 99 field sensors exactly once to synchronize machine learning forecasting models, and returns to base. The time spent navigating between sensors is calculated using rounded Euclidean distances. Build a model to sequence the rover paths to minimize total navigation time.",
+    "user_preference": "Scalability under long-route conditions. Formulations that struggle with long sequence symmetries or those requiring exponential subtour elimination constraints should be carefully handled. A formulation providing strong valid inequalities to tighten the root node relaxation is highly preferred."
+  },
+  {
+    "instance_id": "tsp_lin105",
+    "base_problem": "TSP",
+    "domain": "Agentic_AI_Model_Testing",
+    "characteristics": {
+      "total_locations": 105,
+      "depot_count": 1,
+      "target_count": 104
+    },
+    "nlp_description": "A research project is testing an agentic AI system's ability to autoformulate a routing problem for 105 server nodes in a cloud cluster. A virtual packet must originate from the main server, ping all 104 secondary servers strictly once, and return to the origin. The latency between servers represents the cost. Construct an optimization model to decide the best visitation order that minimizes the total latency.",
+    "user_preference": "Dynamic adaptability and portfolio generation. The system requires the generation of diverse models such as Big-M and commodity flow variations. Prioritize incredibly fast warm-starts and rapid generation of a pareto front of formulations over proving global optimality."
+  },
+  {
+    "instance_id": "tsp_eil101",
+    "base_problem": "TSP",
+    "domain": "UAV_Swarm_Task_Allocation",
+    "characteristics": {
+      "total_locations": 101,
+      "depot_count": 1,
+      "target_count": 100
+    },
+    "nlp_description": "A control center is mapping out a flight trajectory for a scout drone leading a multi-aircraft task allocation mission. The drone must cover 101 designated airspace waypoints. It launches from the command ship, crosses every other 100 waypoints exactly once, and lands back on the ship. The aerodynamic resistance between waypoints dictates the flight cost. Formulate a mathematical model to help the drone plan a flight route that minimizes total aerodynamic resistance.",
+    "user_preference": "Time-critical operation requiring robust sub-optimal solutions. A tight mathematical formulation is less important than having a model structure that commercial solvers can quickly ingest and process using fast heuristics."
+  }
+]

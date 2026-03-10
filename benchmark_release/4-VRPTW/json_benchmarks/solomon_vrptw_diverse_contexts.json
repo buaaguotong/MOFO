@@ -1,0 +1,92 @@
+[
+  {
+    "instance_id": "vrptw_c101",
+    "base_problem": "VRPTW",
+    "domain": "Cold_Chain_Fresh_Food_Delivery",
+    "characteristics": {
+      "total_locations": 101,
+      "depot_count": 1,
+      "client_count": 100,
+      "spatial_distribution": "Clustered",
+      "time_window_type": "Tight",
+      "capacity_type": "Small"
+    },
+    "nlp_description": "A cold-chain logistics provider must deliver perishable fresh produce from a central refrigerated warehouse to 100 clustered supermarkets. Each supermarket requires a specific payload of goods and imposes a strict delivery time window to ensure freshness and align with staff availability. The delivery fleet consists of homogeneous refrigerated trucks with limited payload capacities. A truck must start at the warehouse, service a sequence of supermarkets within their exact time windows without exceeding its capacity, and return to the warehouse. Arriving early at a supermarket requires the truck to wait until the time window opens, but arriving late is strictly prohibited. Service time for unloading is fixed at each location. The travel time and distance are proportional to the rounded 2D Euclidean distance. Formulate a mathematical model to minimize the number of deployed trucks as the primary objective, and the total travel distance as the secondary objective.",
+    "user_preference": "Highly constrained feasible generation. Given the extremely tight time windows and clustered nature, finding any feasible solution quickly is challenging. The user operates on standard commercial hardware and prefers formulations that explicitly model time windows using compact continuous variables (e.g., Big-M constraints) rather than heavily discretized time-indexed variables which would cause memory overflow."
+  },
+  {
+    "instance_id": "vrptw_c201",
+    "base_problem": "VRPTW",
+    "domain": "Night_Time_Bank_Cash_Replenishment",
+    "characteristics": {
+      "total_locations": 101,
+      "depot_count": 1,
+      "client_count": 100,
+      "spatial_distribution": "Clustered",
+      "time_window_type": "Wide",
+      "capacity_type": "Large"
+    },
+    "nlp_description": "A security firm is scheduling armored vehicles to replenish cash at 100 clustered ATM locations across a metropolitan area during the night. The operation originates from a single secure vault. The ATMs have exceptionally wide operational time windows, and the armored vehicles possess massive payload capacities, allowing a single vehicle to service dozens of ATMs in one extremely long trip. Each ATM requires a specific cash volume and a fixed duration for secure loading. Early arrivals require waiting, and late arrivals are forbidden. Construct an optimization model to sequence the cash deliveries to strictly minimize the fleet size first, and then the total driven distance.",
+    "user_preference": "Scalability for ultra-long routes. Because vehicles have large capacities and time windows are wide, individual route sequences will be very long. The user explicitly requests avoiding standard subtour elimination constraints that scale exponentially with route length. Instead, set partitioning formulations or column-generation-friendly structures are strongly preferred to maintain a tight root relaxation without node explosion."
+  },
+  {
+    "instance_id": "vrptw_r101",
+    "base_problem": "VRPTW",
+    "domain": "Urgent_Medical_Courier_Dispatch",
+    "characteristics": {
+      "total_locations": 101,
+      "depot_count": 1,
+      "client_count": 100,
+      "spatial_distribution": "Random",
+      "time_window_type": "Tight",
+      "capacity_type": "Small"
+    },
+    "nlp_description": "An emergency medical courier service is dispatching vans from a main hospital depot to collect biological samples from 100 randomly scattered private clinics across the city. Each clinic has an extremely narrow time window during which the samples are ready for collection and a fixed service time for handover. The vans have small storage limits for biohazard containers. Vans must depart the hospital, visit multiple clinics exactly within their strict time windows without violating capacity, and return. Build a routing model to determine the fleet assignment and collection sequence that minimizes the total number of vans used, followed by the total transit distance.",
+    "user_preference": "Time-critical and heuristic-friendly structure. The random distribution and tight windows require deploying many vehicles with short routes. The dispatcher needs a dispatch plan within 15 seconds. The formulation must be easily ingestible by a solver's built-in heuristic engine. If absolute feasibility cannot be proven quickly, the user prefers a model that implements 'soft' time windows with massive penalty variables for lateness to guarantee a fallback solution."
+  },
+  {
+    "instance_id": "vrptw_r201",
+    "base_problem": "VRPTW",
+    "domain": "E_Commerce_Bulk_Delivery",
+    "characteristics": {
+      "total_locations": 101,
+      "depot_count": 1,
+      "client_count": 100,
+      "spatial_distribution": "Random",
+      "time_window_type": "Wide",
+      "capacity_type": "Large"
+    },
+    "nlp_description": "A regional e-commerce distribution center is mapping out bulk delivery routes for 100 randomly distributed suburban households. The households have selected broad 'anytime today' delivery windows, and the delivery trucks have massive cargo capacities. A truck leaves the center, drops off specific package volumes at various homes, spends a fixed time unloading at each stop, and returns to the center. Develop a mathematical model to assign households to trucks and sequence their visits to minimize the fleet size and the total driving distance.",
+    "user_preference": "Memory efficient bounding. The relaxed constraints (wide windows, large capacity) mean an enormous number of feasible paths exist, creating a massive search space. The user requires a mathematically elegant formulation that provides a very tight lower bound to aggressively prune the branch-and-bound tree, accepting longer modeling time for a high-quality global perspective."
+  },
+  {
+    "instance_id": "vrptw_rc101",
+    "base_problem": "VRPTW",
+    "domain": "Urban_Vending_Machine_Restocking",
+    "characteristics": {
+      "total_locations": 101,
+      "depot_count": 1,
+      "client_count": 100,
+      "spatial_distribution": "Mixed",
+      "time_window_type": "Tight",
+      "capacity_type": "Small"
+    },
+    "nlp_description": "A beverage distributor is restocking 100 smart vending machines. Some machines are clustered tightly inside shopping malls, while others are scattered randomly along highways. Delivery windows are extremely strict to avoid disrupting peak foot traffic, and each restock requires a fixed service time. The delivery vans have limited inventory capacities. Vans launch from the central bottling plant, fulfill exact machine requirements within their strict operational windows, and return. Build an optimization model to route the vans to minimize the total vehicles dispatched and overall distance.",
+    "user_preference": "High stability and exactness for complex topologies. The mixed spatial distribution makes routing highly non-trivial. The user plans these routes completely offline over the weekend using a high-performance computing cluster. Formulations that yield 0 percent optimality gaps are strictly required. Computational time (up to 24 hours) and memory footprint are not limiting factors."
+  },
+  {
+    "instance_id": "vrptw_rc201",
+    "base_problem": "VRPTW",
+    "domain": "Municipal_Street_Sweeping",
+    "characteristics": {
+      "total_locations": 101,
+      "depot_count": 1,
+      "client_count": 100,
+      "spatial_distribution": "Mixed",
+      "time_window_type": "Wide",
+      "capacity_type": "Large"
+    },
+    "nlp_description": "A city public works department is scheduling a fleet of autonomous street sweepers for 100 designated urban zones. The zones present a mixed topology: some are dense downtown grids, while others are isolated suburban avenues. The sweepers have huge water tank capacities and wide operating windows spanning the entire day. Each zone requires a specific sweeping volume and duration. Sweepers depart from the municipal depot, clean a sequence of zones, and return. Construct a mathematical model to sequence the sweepers to minimize the fleet size and total operating distance.",
+    "user_preference": "Dynamic adaptability with balanced trade-offs. The city planner needs to re-run the model if sudden weather changes occur. The formulation should strike a robust balance between spatial complexity and relaxation tightness, providing a high-quality schedule within a 5-minute computational budget."
+  }
+]
