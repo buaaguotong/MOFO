@@ -112,12 +112,10 @@ In this case, the classic mathematical graph `A-n80-k10` is disguised as a **Low
   }
 }
 
-Field Breakdown
-domain & nlp_description: Tests the LLM's Natural Language Understanding (NLU). The Agent must map "blood packs" to mathematical demand, "drones" to vehicles, and "battery consumption" to the objective function.
 
-user_preference: The core of the multiobjective evaluation. In this specific case, the Agentic AI must recognize the "edge device" and "time-critical" constraints, prompting it to generate a compact formulation (e.g., MTZ or single-commodity flow) rather than a memory-heavy Set Partitioning formulation, even if it sacrifices the optimality gap.
+### Field Breakdown
 
-data_attachment: The clean, isolated mathematical parameters. This allows your solver execution sandbox to automatically inject arrays into the generated model without parsing messy text.
-
-ground_truth: The absolute optimal value (1763) acts as the anchor for calculating the MIPGap of the LLM-generated models during the multiobjective Pareto front evaluation.
-
+- **`domain` & `nlp_description`**: Tests the LLM's Natural Language Understanding (NLU). The Agent must map "blood packs" to mathematical `demand`, "drones" to `vehicles`, and "battery consumption" to the `objective function`.
+- **`user_preference`**: The core of the multiobjective evaluation. In this specific case, the Agentic AI must recognize the "edge device" and "time-critical" constraints, prompting it to generate a compact formulation (e.g., MTZ or single-commodity flow) rather than a memory-heavy Set Partitioning formulation, even if it sacrifices the optimality gap.
+- **`data_attachment`**: The clean, isolated mathematical parameters. This allows your solver execution sandbox to automatically inject arrays into the generated model without parsing messy text.
+- **`ground_truth`**: The absolute optimal value (`1763`) acts as the anchor for calculating the `MIPGap` of the LLM-generated models during the multiobjective Pareto front evaluation.
